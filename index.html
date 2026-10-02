@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caacupe+One&family=Chakra+Petch:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=Days+One&family=Exo:ital,wght@0,100..900;1,100..900&family=IBM+Plex+Sans+Arabic:wght@100;200;300;400;500;600;700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Maven+Pro:wght@400..900&family=Noto+Sans+Arabic:wght@100..900&family=Raleway:ital,wght@0,100..900;1,100..900&family=Zilla+Slab:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+    <body>
+        <div class="hero d-none" id="hero"></div>
+<nav class="w-100 mb-5">
+    <sec1 class="d-flex align-items-center">
+        <icon1 class="me-2"><i class="fa-solid fa-address-book" style="color: rgb(255, 255, 255);"></i></icon1>
+        <h2>Contact<span>Hub</span></h2>
+    </sec1>
+    <sec2 class="d-flex align-items-center">
+        <button class="me-4" id="add" >+ Add Contact</button>
+        <icon class="me-4"><i class="fa-solid fa-bell" style="color: rgb(189, 183, 183);"></i></icon>
+        <icon class="me-4"><i class="fa-solid fa-gear" style="color: rgb(189, 183, 183);"></i></icon>
+        <img src="avatar-4.jpg" alt="person" width="50px">   
+    </sec2>
+</nav>
+<!-- ===============add=================== -->
+<div class="cont d-none" id="cont">
+    <div class="">
+        <h2>Add New Contact</h2>
+       <div class="mark"><i id="mark" class="fa-solid fa-xmark" style="color: rgb(143, 141, 141);"></i></div>
+    </div>
+ <div class="text-center mt-3">
+<icon class="rounded-circle "><i class="fa-solid fa-user" style="color: rgb(255, 255, 255);"></i></icon>
+<br>
+<button id="photo" class="mt-4"><i class="fa-solid fa-camera" style="color: rgb(182, 181, 181);"></i> Change Photo</button>
+</div>
+
+<label>Full Name <span class="text-danger">*</span></label><br>
+<input oninput="nv()" type="text" class="form-control"  placeholder="Enter full name" id="name">
+<p id="p1" class="d-none">Name should contain only letters and spaces (2-50 characters)</p>
+<br>
+<label>Phone Number<span class="text-danger">*</span></label><br>
+<input oninput="pv()" type="tel" class="form-control "  placeholder="e.g., 01012345678" id="phone">
+<p class="d-none" id="p2">Please enter a valid Egyptian phone number</p><br>
+<label>Email Address</label><br>
+<input type="email" class="form-control"  placeholder="name@example.com" id="email">
+<br>
+<label>Address</label><br>
+<input type="text" placeholder="Enter address" id="address">
+<br>
+<a href="tel" ></a>
+<label>Group</label><br>
+<select id="select">
+    <option value="Select a group">Select a group</option>
+    <option value="Family">Family</option>
+    <option value="Friends">Friends</option>
+    <option value="Work">Work</option>
+    <option value="School">School</option>
+    <option value="Other">Other</option>
+</select><br>
+<label>Notes</label><br>
+<input type="text" placeholder="Add notes about this contact" id="notes" >
+<br>
+<DIV class="d-flex align-items-center ">
+<span id="fav" class="d-flex align-items-center">
+<input  type="checkbox" id="ch1">
+<i class="me-1 ms-1 fa-solid fa-star" style="color:#FFB900"></i>
+<span>Favorite</span>
+</span>
+<span id="emer" class="d-flex align-items-center ms-4">
+<input type="checkbox" id="ch2" >
+<i class="me-1 ms-1 fa-solid fa-heart-pulse" style="color: #FF2056"></i>
+<span>Emergency</span>
+</span>
+</DIV>
+<div class="d-flex flex-wrap">
+<button id="cancel" class="col-12 col-lg-6">Cancel</button>
+<button id="save" class="col-12 col-lg-6"><i class="fa-solid fa-check" style="color: rgb(255, 255, 255);"></i> Save Contact</button>
+</div>
+</div>
+<!-- ==============sec1======================= -->
+<sec11 class="d-flex flex-wrap ps-4">
+    <div  class=" col-6 col-lg-4 mt-3">
+<part1 class="d-flex align-items-center rounded-4" style="width: 90%;">
+    <icon1 class="me-4"><i class="fa-solid fa-users" style="color: rgb(250, 247, 247);"></i></icon1>
+    <text><p class="mb-0">Total</p><h2 id="total"></h2></text>
+</part1>
+</div>
+
+    <div  class=" col-6 col-lg-4 mt-3">
+<part1 class="d-flex align-items-center rounded-4" style="width: 90%;">
+    <icon2 class="me-4"><i class="fa-solid fa-star" style="color: rgb(255, 255, 255);"></i></icon2>
+    <text><p class="mb-0">Favorites</p><h2 id="total2"></h2></text>
+</part1>
+</div>
+
+    <div  class=" col-6 col-lg-4 mt-3">
+<part1 class="d-flex align-items-center rounded-4" style="width: 90%;">
+    <icon3 class="me-4"><i class="fa-solid fa-heart-pulse" style="color: rgb(255, 255, 255);"></i></icon3>
+    <text><p class="mb-0">Emergency</p><h2 id="total3"></h2></text>
+</part1>
+</div>
+</sec11>
+
+
+
+<!-- =============showdata======================== -->
+<div id="cont2" class=" cont2 d-flex flex-wrap justify-content-between">
+
+</div>
+</div>
+<!-- =================================== -->
+<div id="card2" >
+    
+    <div class="favour d-flex align-items-center">
+<star><i class="fa-solid fa-star" style="color: rgb(255, 255, 255);"></i></star>
+<text>
+    <h4 class="mt-0">Favorites</h4>
+    <p>Quick access</p>
+</text>
+    </div>
+
+<div id="body2" class="d-flex flex-wrap p-3 justify-content-between" >
+</div>
+</div>
+
+<div id="card3" >
+    
+    <div class="favour2 d-flex align-items-center">
+<star><i class="fa-solid fa-heart-pulse" style="color: rgb(255, 255, 255);"></i></star>
+<text>
+    <h4 class="mt-0">Emergency</h4>
+    <p>Urgent contacts</p>
+</text>
+    </div>
+
+<div id="body3" class="d-flex flex-wrap p-3 justify-content-between" >
+</div>
+</div>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="js/index.js"></script>
+    </body>
+</html>
