@@ -255,7 +255,7 @@ function showdata(){
 test2+=` <diva class="col-12 col-lg-6 d-flex justify-content-between p-2">
        
         <div class="d-flex align-items-center">
-             <imge><img src="${array[i].img}"></imge>
+             <imge><img src="${array[i].img}" alt="${array[i].nam[0]}"></imge>
              <text2>
                    <h4>${array[i].nam}</h4>
                    <p>${array[i].phone}</p>
@@ -269,7 +269,7 @@ test2+=` <diva class="col-12 col-lg-6 d-flex justify-content-between p-2">
 test3+=` <diva class="col-12 col-lg-6 d-flex justify-content-between p-2">
        
         <div class="d-flex align-items-center">
-             <imge><img src="${array[i].img}"></imge>
+             <imge><img src="${array[i].img}" alt="${array[i].nam[0]}"></imge>
              <text2>
                    <h4>${array[i].nam}</h4>
                    <p>${array[i].phone}</p>
