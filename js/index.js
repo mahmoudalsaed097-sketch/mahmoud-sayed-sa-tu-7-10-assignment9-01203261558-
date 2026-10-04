@@ -15,13 +15,15 @@ var p2 = document.getElementById('p2')
 var hero = document.getElementById('hero')
 let body=document.getElementById('body')
 let body2=document.getElementById('body2')
-
+let logo=document.getElementById('logo')
+let search=document.getElementById('search')
+let photo=document.getElementById('photo')
 
 var array = [];
 
 if (localStorage.getItem('user') !== null) { array = JSON.parse(localStorage.getItem('user')) }
 
-
+ 
 function show(){
 
 let total=document.getElementById('total')
@@ -111,6 +113,7 @@ save.onclick = function () {
         footer: "<a href=\"#\"></a>"
       });
     }
+
     else if (flag1 == false) {
       Swal.fire({
         icon: "error",
@@ -122,12 +125,14 @@ save.onclick = function () {
   }
 
   if (flag1 == true && flag2 == true && flag3 == true) {
-
+  
     Swal.fire({
       title: "Added",
       icon: "success",
       text: "contact has been added successfuly.",
-      draggable: true
+      draggable: true,
+       timer:"2000",
+     showConfirmButton:false,
     });
 
     var obj = {
@@ -139,19 +144,20 @@ save.onclick = function () {
       select: select.value,
       ch1: ch1.checked,
       ch2: ch2.checked,
+      img:`imgs/${photo.files[0].name}`
      
     }
-   
-    array.push(obj)
-    localStorage.setItem("user", JSON.stringify(array))
-    showdata()
-cont.classList.add("d-none")
-hero.classList.add("d-none")
 
+
+ array.push(obj)
 
   }
-
-
+ 
+   cont.classList.add("d-none")
+hero.classList.add("d-none")
+   
+    localStorage.setItem("user", JSON.stringify(array))
+    showdata()
 
   //  *****
 
@@ -160,9 +166,10 @@ hero.classList.add("d-none")
 }
 //  *****
 
+
 // ==========invalid  &&  flags===================
 var x = /^[0-9]{10}$/
-var n = /^[\w \s]{2,50}$/
+var n = /^[\D \s]{2,50}$/
 
 function nv() {
   if (n.test(nam.value)) {
@@ -248,7 +255,7 @@ function showdata(){
 test2+=` <diva class="col-12 col-lg-6 d-flex justify-content-between p-2">
        
         <div class="d-flex align-items-center">
-             <imge>${array[i].nam[0].toUpperCase()}</imge>
+             <imge><img src="${array[i].img}"></imge>
              <text2>
                    <h4>${array[i].nam}</h4>
                    <p>${array[i].phone}</p>
@@ -262,7 +269,7 @@ test2+=` <diva class="col-12 col-lg-6 d-flex justify-content-between p-2">
 test3+=` <diva class="col-12 col-lg-6 d-flex justify-content-between p-2">
        
         <div class="d-flex align-items-center">
-             <imge>${array[i].nam[0].toUpperCase()}</imge>
+             <imge><img src="${array[i].img}"></imge>
              <text2>
                    <h4>${array[i].nam}</h4>
                    <p>${array[i].phone}</p>
@@ -280,14 +287,14 @@ test3+=` <diva class="col-12 col-lg-6 d-flex justify-content-between p-2">
       <i id="s1" class=" fa-solid fa-star" style="color: rgb(138, 30, 30);"></i>
     <i id="h1" class=" fa-solid fa-heart-pulse" style="color: rgb(117, 76, 76);"></i>
   <header class="d-flex align-items-center">
-<div id="imge">${array[i].nam[0]}</div>
+<div id="imge"><img src="${array[i].img}"></div>
 <div class="ms-3">
     <h2 id="fnam">${array[i].nam}</h2>
     <div class="d-flex align-items-center"><div class="me-2 icons1"><i class="fa-solid fa-phone" style="color:#155DFC;"></i></div> <p id="num" class="mb-0">${array[i].phone}</p></div>
 </div>
 </header>
 
-<div class="mt-3 d-flex align-items-center"><div class="me-2 icons2"><i class="fa-solid fa-envelope" style="color: #9B54FE"></i></div><p id="email1" class="mb-0">${array[i].email}</p></div>
+<div class="mt-3 d-flex align-items-center"><div class="me-2 icons2"><i class="fa-solid fa-envelope" style="color: #b4acbf"></i></div><p id="email1" class="mb-0">${array[i].email}</p></div>
 <div class="mt-2 d-flex align-items-center"><div class="me-2 icons3"><i class="fa-solid fa-location-dot" style="color:#009966"></i></div><p id="location" class="mb-0">${array[i].address}</p></div>
 
 <div class="d-flex align-items-center mt-1"><p class="mb-0 work" id="work">${array[i].select}</p><div id="emerg" class="d-flex align-items-center ms-3"><i class="fa-solid fa-heart-pulse" style="color:#FF2056;"></i> <p class="mb-0 ms-1">Emergency</p></div></div>
@@ -316,7 +323,7 @@ else if(array[i].ch2==true&&array[i].ch1==false){  test+=`
  <i id="h1" class=" fa-solid fa-heart-pulse" style="color: rgb(117, 76, 76);"></i>
    
    <header class="d-flex align-items-center">
-<div id="imge">${array[i].nam[0]}</div>
+<div id="imge"><img src="${array[i].img}"></div>
 <div class="ms-3">
     <h2 id="fnam">${array[i].nam}</h2>
     <div class="d-flex align-items-center"><div class="me-2 icons1"><i class="fa-solid fa-phone" style="color:#155DFC;"></i></div> <p id="num" class="mb-0">${array[i].phone}</p></div>
@@ -349,7 +356,7 @@ else if(array[i].ch1==true&&array[i].ch2==false){test+=`
 <div id="card" class="col-11 col-lg-5 m-2 ms-5 me-5 position-relative">
 <i id="s1" class=" fa-solid fa-star" style="color: rgb(138, 30, 30);"></i>
 <header class="d-flex align-items-center">
-<div id="imge">${array[i].nam[0]}</div>
+<div id="imge"><img src="${array[i].img}"></div>
 <div class="ms-3">
     <h2 id="fnam">${array[i].nam}</h2>
     <div class="d-flex align-items-center"><div class="me-2 icons1"><i class="fa-solid fa-phone" style="color:#155DFC;"></i></div> <p id="num" class="mb-0">${array[i].phone}</p></div>
@@ -382,7 +389,7 @@ else if(array[i].ch1==true&&array[i].ch2==false){test+=`
 <i id="h1" class=" fa-solid fa-heart-pulse" style="color: rgb(117, 76, 76);"></i>
   
 <header class="d-flex align-items-center">
-<div id="imge">${array[i].nam[0]}</div>
+<div id="imge"><img src="${array[i].img}"></div>
 <div class="ms-3">
     <h2 id="fnam">${array[i].nam}</h2>
     <div class="d-flex align-items-center"><div class="me-2 icons1"><i class="fa-solid fa-phone" style="color:#155DFC;"></i></div> <p id="num" class="mb-0">${array[i].phone}</p></div>
@@ -414,7 +421,7 @@ else if(array[i].ch1==true&&array[i].ch2==false){test+=`
 <div id="card" class="col-11 col-lg-5 m-2 ms-5 me-5 position-relative">
 
 <header class="d-flex align-items-center">
-<div id="imge">${array[i].nam[0]}</div>
+<div id="imge"><img src="${array[i].img}"></div>
 <div class="ms-3">
     <h2 id="fnam">${array[i].nam}</h2>
     <div class="d-flex align-items-center"><div class="me-2 icons1"><i class="fa-solid fa-phone" style="color:#155DFC;"></i></div> <p id="num" class="mb-0">${array[i].phone}</p></div>
@@ -447,7 +454,7 @@ else if(array[i].ch1==true&&array[i].ch2==false){test+=`
 test += `
   <div id="card" class="col-11 col-lg-5 m-2 ms-5 me-5 position-relative">
     <header class="d-flex align-items-center">
-<div id="imge">${array[i].nam[0]}</div>
+<div id="imge"><img src="${array[i].img}"></div>
 <div class="ms-3">
     <h2 id="fnam">${array[i].nam}</h2>
     <div class="d-flex align-items-center"><div class="me-2 icons1"><i class="fa-solid fa-phone" style="color:#155DFC;"></i></div> <p id="num" class="mb-0">${array[i].phone}</p></div>
@@ -486,19 +493,94 @@ body2.innerHTML=test2;
 body3.innerHTML=test3;
 show()
 func()
+ log()
+
+
+}
+
+// ====================================================
+// ====================================================
+search.oninput=function(){
+let test=""
+for(i=0;i<array.length;i++){
+  if(array[i].nam.includes(search.value)){
+test += `
+  <div id="card" class="col-11 col-lg-5 m-2 ms-5 me-5 position-relative">
+    <header class="d-flex align-items-center">
+<div id="imge">${array[i].nam[0]}</div>
+<div class="ms-3">
+    <h2 id="fnam">${array[i].nam}</h2>
+    <div class="d-flex align-items-center"><div class="me-2 icons1"><i class="fa-solid fa-phone" style="color:#155DFC;"></i></div> <p id="num" class="mb-0">${array[i].phone}</p></div>
+</div>
+</header>
+
+<div class="mt-3 d-flex align-i]tems-center"><div class="me-2 icons2"><i class="fa-solid fa-envelope" style="color: #9B54FE"></i></div><p id="email1" class="mb-0">${array[i].email}</p></div>
+<div class="mt-2 d-flex align-items-center"><div class="me-2 icons3"><i class="fa-solid fa-location-dot" style="color:#009966"></i></div><p id="location" class="mb-0">${array[i].address}</p></div>
+
+<div class="d-flex align-items-center mt-1"><p class="mb-0 work" id="work">${array[i].select}</p><div id="emerg" class="d-flex align-items-center ms-3"><i class="fa-solid fa-heart-pulse" style="color:#FF2056;"></i> <p class="mb-0 ms-1">Emergency</p></div></div>
+
+
+<div class="footer d-flex align-items-center justify-content-between mt-2">
+    <div class="d-flex align-items-center justify-content-between">
+   <a class="a1" href="tel:${array[i].phone}"><i class="fa-solid fa-phone" style="color: #009966;"></i></a>
+    <a class="a2" href="mailto:${array[i].email}"><i class="fa-solid fa-envelope" style="color: #7F22FE;"></i></a>
+    </div>
  
+    <div class="d-flex align-items-center justify-content-between">
+        <i1 class="i1 me-3" onclick=change2(${i})><i class="fa-solid fa-star" style="color: #FFB900;"></i></i1>
+        <i1 class="i2 me-3"  onclick=change(${i})><i   class="fa-solid fa-heart-pulse" style="color:#FF2056;"></i></i1>
+        <i1 onclick=update(${i}) class="i3 me-3"><i class="fa-solid fa-pen" style="color: #6A7282"></i></i1>
+        <i1 onclick=del(${i}) class="i4" ><i class="fa-solid fa-trash" style="color: #6A7282;"></i></i1>
+    </div>
+
+</div>
+
+</div>`
+
+
+
+
+
+  }
+  cont2.innerHTML=test
+  
+}
+
 }
 
 
 
 
-
-
-
 function del(i) {
-  array.splice(i, 1)
+  Swal.fire({
+  title: "Are you sure?",
+  text: "You won't be able to revert this!",
+  icon: "warning",
+  showCancelButton: true,
+ 
+  confirmButtonColor: "#3085d6",
+  cancelButtonColor: "#d33",
+  confirmButtonText: "Yes, delete it!"
+}).then((result) => {
+ 
+  if (result.isConfirmed) {
+
+      Swal.fire({
+    
+    title: "Deleted!",
+    text: "Your file has been deleted.",
+    icon: "success",
+    timer:"2000",
+     showConfirmButton:false,
+  });
+   array.splice(i, 1)
   localStorage.setItem('user', JSON.stringify(array))
   showdata()
+}
+  
+});
+
+ 
 }
 var ii;
 function update(i) {
@@ -568,8 +650,15 @@ for (i = 0; i < array.length; i++) {
 
 
 // ==============favouret && emergence===========================
-
-
+function log(){
+if(array.length==0){
+cont2.classList.add('d-none')
+logo.classList.remove('d-none')
+}else{
+  cont2.classList.remove('d-none')
+  logo.classList.add('d-none')
+}
+}
 
 
 

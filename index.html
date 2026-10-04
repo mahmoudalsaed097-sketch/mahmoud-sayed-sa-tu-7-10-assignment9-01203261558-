@@ -22,14 +22,14 @@
 </nav>
 <!-- ===============add=================== -->
 <div class="cont d-none" id="cont">
-    <div class="">
+    <div>
         <h2>Add New Contact</h2>
        <div class="mark"><i id="mark" class="fa-solid fa-xmark" style="color: rgb(143, 141, 141);"></i></div>
     </div>
  <div class="text-center mt-3">
 <icon class="rounded-circle "><i class="fa-solid fa-user" style="color: rgb(255, 255, 255);"></i></icon>
 <br>
-<button id="photo" class="mt-4"><i class="fa-solid fa-camera" style="color: rgb(182, 181, 181);"></i> Change Photo</button>
+<input id="photo" class="mt-4 form-control" placeholder="Change Photo" type="file">
 </div>
 
 <label>Full Name <span class="text-danger">*</span></label><br>
@@ -98,11 +98,24 @@
 </part1>
 </div>
 </sec11>
+<!-- ================search=============================== -->
+    <div class="search">
+        <h2>All Contacts</h2>
+        <p>Manage and organize your 1 contacts</p>
+        <input type="search" placeholder="Search by name, phone, or email..." id="search" >
+    </div>
 
 
 
+
+<!-- =============emty============================== -->
+ <div class="text-center" id="logo">
+ <div class="icon6"><i class="fa-solid fa-address-book" style="color: rgb(255, 255, 255);"></i></div>
+ <h4>No contacts found</h4>
+ <p>Click "Add Contact" to get started</p>
+ </div>
 <!-- =============showdata======================== -->
-<div id="cont2" class=" cont2 d-flex flex-wrap justify-content-between">
+<div id="cont2" class=" cont2 d-flex flex-wrap justify-content-between ">
 
 </div>
 </div>
